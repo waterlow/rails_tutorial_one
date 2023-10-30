@@ -65,4 +65,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+
+  # integration testに必要（system_testに置き換え可能？）
+  gem 'rails-controller-testing'
 end
