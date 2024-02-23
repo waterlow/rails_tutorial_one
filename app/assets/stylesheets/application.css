@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+.field_with_errors {
+  input {
+    border-color: var(--bs-danger);
+  }
+
+  label {
+    color: var(--bs-danger);
+  }
+}
