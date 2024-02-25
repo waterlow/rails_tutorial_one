@@ -18,6 +18,7 @@
       <%= yield %>
       <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
+      <%= debug(current_user.as_json) if Rails.env.development? %>
     </main>
   </body>
 </html>
