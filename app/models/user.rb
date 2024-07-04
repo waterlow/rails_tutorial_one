@@ -10,4 +10,27 @@ class User < ApplicationRecord
   normalizes :email, with: -> email { email.downcase }
 
   has_secure_password
+
+  attr_accessor :remember_token
+
+  def remember
+    self.remember_token = SecureRandom.urlsafe_base64
+    remember_digest = BCrypt::Password.create(remember_token, cost: BCrypt::Engine.cost)
+    update_attribute(:remember_digest, remember_digest)
+    remember_digest
+  end
+
+  def authenticated?(remember_token)
+    remember_digest &&
+      BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  # ユーザーのログイン情報を破棄する
+  def forget
+    update_attribute(:remember_digest, nil)
+  end
+
+  def session_token
+    remember_digest || remember
+  end
 end
