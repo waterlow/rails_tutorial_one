@@ -5,6 +5,7 @@ one:
   email: michael@example.com
   password_digest: <%= BCrypt::Password.create('password', cost: BCrypt::Engine::MIN_COST) %>
 
-# two:
-#   name: MyString
-#   email: MyString
+two:
+  name: Tom
+  email: tom@example.com
+  password_digest: <%= BCrypt::Password.create('password', cost: BCrypt::Engine::MIN_COST) %>
