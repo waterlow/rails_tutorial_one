@@ -1,0 +1,17 @@
+<% provide(:title, 'All users') %>
+<div class="row justify-content-center">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>All Users</h1>
+    <%= will_paginate renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+    <div class="users">
+      <% @users.each do |user| %>
+        <div class="border-bottom m-2 p-2">
+          <%= gravatar_for user, size: 50 %>
+          <%= link_to user.name, user %>
+        </div>
+      <% end %>
+    </div>
+    <%= will_paginate renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  </div>
+</div>
+

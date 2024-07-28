@@ -13,9 +13,13 @@ class User < ApplicationRecord
 
   attr_accessor :remember_token
 
+  def self.digest(str)
+    BCrypt::Password.create(str, cost: BCrypt::Engine.cost)
+  end
+
   def remember
     self.remember_token = SecureRandom.urlsafe_base64
-    remember_digest = BCrypt::Password.create(remember_token, cost: BCrypt::Engine.cost)
+    remember_digest = self.class.digest(remember_token)
     update_attribute(:remember_digest, remember_digest)
     remember_digest
   end
